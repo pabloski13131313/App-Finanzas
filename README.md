@@ -43,7 +43,7 @@ Si prefieres ejecutarlo en tu propio ordenador:
 
 1.  **Clona el repositorio:**
     ```bash
-    git clone [https://github.com/TU_USUARIO/mi-dashboard-finanzas.git](https://github.com/TU_USUARIO/mi-dashboard-finanzas.git)
+    git clone https://github.com/pabloski13131313/App-Finanzas.git
     cd mi-dashboard-finanzas
     ```
 
