@@ -37,6 +37,12 @@ URL: https://app-finanzas.streamlit.app/
 4. Confirma la instalación.
 
 ¡Ahora tendrás el icono en tu menú y podrás consultar tus inversiones en cualquier momento!
+
+<p align="center">
+  <img src="icono.jpeg" width="250" alt="Icono App">
+  
+  &nbsp; &nbsp; <img src="appMovil.jpeg" width="250" alt="Visualización App Móvil">
+</p>
 ## 🛠️ Instalación y Uso Local
 
 Si prefieres ejecutarlo en tu propio ordenador:
@@ -57,6 +63,11 @@ Si prefieres ejecutarlo en tu propio ordenador:
     streamlit run dashboard.py
     ```
     *Se abrirá automáticamente una pestaña en tu navegador.*
+<br> <p align="center">
+  <img src="appPC.png" alt="Visualización App PC" width="100%">
+</p>
+
+<br>
 
 ## 📂 Cómo obtener tus datos
 
