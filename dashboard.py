@@ -128,31 +128,49 @@ def main():
     with tab2:
         st.subheader("Detalle por Activo")
         lista_empresas = sorted(df["Activo"].unique())
-        empresa_selec = st.selectbox("Empresa:", lista_empresas)
+        empresa_selec = st.selectbox("Selecciona una empresa:", lista_empresas)
         
+        # Filtros
         df_empresa = df[df["Activo"] == empresa_selec].sort_values("Fecha")
         
-        # Step Chart lógica
+        # Preparar Gráfico Escalera (Step Chart)
         primera_fecha = df_empresa["Fecha"].iloc[0]
         start_row = pd.DataFrame([{
             "Fecha": primera_fecha, "Activo": empresa_selec, "Invertido": 0, 
             "PnL ($)": 0, "ROI (%)": 0, "PnL Acumulado": 0, "Mes": primera_fecha.strftime("%Y-%m")
         }])
+        
         df_empresa["PnL Acumulado"] = df_empresa["PnL ($)"].cumsum()
         df_chart = pd.concat([start_row, df_empresa]).drop_duplicates(subset=["Fecha"], keep='last')
 
-        # Métricas mini
+        # Métricas Detalladas
+        t_inv_emp = df_empresa["Invertido"].sum()
         t_pnl_emp = df_empresa["PnL ($)"].sum()
+        t_roi_emp = df_empresa["ROI (%)"].mean()
+        n_ops_emp = len(df_empresa)
         
-        fig_linea = px.line(df_chart, x="Fecha", y="PnL Acumulado", markers=True, line_shape='hv')
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Total Invertido", f"${t_inv_emp:,.2f}")
+        c2.metric("Ganancia Total", f"${t_pnl_emp:,.2f}", delta=f"{t_pnl_emp:,.2f}", delta_color="normal")
+        c3.metric("ROI Promedio", f"{t_roi_emp:.2f}%")
+        c4.metric("Operaciones", f"{n_ops_emp}")
+        
+        # Gráfico
+        st.write(f"📈 **Curva de Beneficio con {empresa_selec}:**")
+        fig_linea = px.line(df_chart, x="Fecha", y="PnL Acumulado", markers=True, 
+                            line_shape='hv')
+        
         fig_linea.add_hline(y=0, line_dash="dash", line_color="gray")
-        fig_linea.update_traces(line_color='#2ecc71' if t_pnl_emp >= 0 else '#e74c3c', fill='tozeroy')
+        fig_linea.update_traces(line_color='#2ecc71' if t_pnl_emp >= 0 else '#e74c3c', 
+                                line_width=3, fill='tozeroy')
         st.plotly_chart(fig_linea, use_container_width=True)
         
-        st.dataframe(df_empresa[["Fecha", "Invertido", "PnL ($)", "ROI (%)"]])
-
+        # Tabla
+        st.dataframe(df_empresa[["Fecha", "Invertido", "PnL ($)", "ROI (%)"]].style.format({
+            "Invertido": "${:.2f}", "PnL ($)": "${:.2f}", "ROI (%)": "{:.2f}%"}))
     with tab3:
         st.dataframe(df)
 
 if __name__ == "__main__":
     main()
+
