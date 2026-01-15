@@ -17,7 +17,26 @@ Esta aplicación transforma los archivos CSV de **Profit & Loss** de Revolut (qu
     * Tabla detallada de cada operación (compra/venta).
 * **Clean Architecture:** El código no es un script suelto. Está estructurado usando patrones de diseño (Strategy & Adapter) para ser modular y escalable.
 * **Privacidad Total:** Los datos se procesan en memoria y no se guardan en ningún servidor.
+  
+## 📱 Cómo instalar en el móvil (iOS y Android)
 
+Puedes instalar este Dashboard en tu teléfono como si fuera una aplicación nativa (sin barras de navegador y a pantalla completa).
+
+URL: https://app-finanzas.streamlit.app/
+
+### En iPhone (iOS)
+1. Abre la URL de la app en **Safari**.
+2. Pulsa el botón **Compartir** (cuadrado con flecha hacia arriba ⬆️).
+3. Busca y selecciona **"Añadir a pantalla de inicio"**.
+4. Dale a "Añadir".
+
+### En Android
+1. Abre la URL de la app en **Chrome**.
+2. Pulsa los **tres puntos** (⋮) arriba a la derecha.
+3. Selecciona **"Instalar aplicación"** o **"Añadir a pantalla de inicio"**.
+4. Confirma la instalación.
+
+¡Ahora tendrás el icono en tu menú y podrás consultar tus inversiones en cualquier momento!
 ## 🛠️ Instalación y Uso Local
 
 Si prefieres ejecutarlo en tu propio ordenador:
