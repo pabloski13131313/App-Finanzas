@@ -44,7 +44,7 @@ Si prefieres ejecutarlo en tu propio ordenador:
 1.  **Clona el repositorio:**
     ```bash
     git clone https://github.com/pabloski13131313/App-Finanzas.git
-    cd mi-dashboard-finanzas
+    cd App-Finanzas
     ```
 
 2.  **Instala las dependencias:**
