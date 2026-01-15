@@ -8,6 +8,8 @@
 
 Esta aplicación transforma los archivos CSV de **Profit & Loss** de Revolut (que son difíciles de leer) en un **Dashboard Interactivo** visual. Te permite entender tu ROI real, ver tu evolución mes a mes y analizar la curva de ganancias de cada empresa individualmente.
 
+URL: https://app-finanzas.streamlit.app/
+
 ## 🚀 Características
 
 * **KPIs Globales:** Visualiza instantáneamente tu Capital Operado, Beneficio Neto y ROI Operativo.
@@ -18,31 +20,60 @@ Esta aplicación transforma los archivos CSV de **Profit & Loss** de Revolut (qu
 * **Clean Architecture:** El código no es un script suelto. Está estructurado usando patrones de diseño (Strategy & Adapter) para ser modular y escalable.
 * **Privacidad Total:** Los datos se procesan en memoria y no se guardan en ningún servidor.
   
+## 📂 Cómo obtener tus datos
+
+Para que la app funcione, necesitas el archivo oficial de Revolut:
+
+1.  Abre la App de Revolut.
+2.  Ve a la sección **Stocks (Acciones)**.
+3.  Pulsa en **"..." (Más)** -> **Statements (Extractos)**.
+4.  Selecciona **Profit and Loss**.
+5.  Elige el rango de fechas (ej. último año) y descarga el **CSV**.
+6.  ¡Sube ese archivo al Dashboard!
+
+
 ## 📱 Cómo instalar en el móvil (iOS y Android)
 
 Puedes instalar este Dashboard en tu teléfono como si fuera una aplicación nativa (sin barras de navegador y a pantalla completa).
-
-URL: https://app-finanzas.streamlit.app/
 
 ### En iPhone (iOS)
 1. Abre la URL de la app en **Safari**.
 2. Pulsa el botón **Compartir** (cuadrado con flecha hacia arriba ⬆️).
 3. Busca y selecciona **"Añadir a pantalla de inicio"**.
-4. Dale a "Añadir".
+4. Ponle el nombre que quieras (Recomenadado: *AppFinanzas*)
+5. Dale a "Añadir".
 
 ### En Android
 1. Abre la URL de la app en **Chrome**.
 2. Pulsa los **tres puntos** (⋮) arriba a la derecha.
 3. Selecciona **"Instalar aplicación"** o **"Añadir a pantalla de inicio"**.
-4. Confirma la instalación.
+4. Ponle el nombre que quieras (Recomenadado: *AppFinanzas*)
+5. Confirma la instalación.
 
 ¡Ahora tendrás el icono en tu menú y podrás consultar tus inversiones en cualquier momento!
 
-<p align="center">
-  <img src="icono.jpeg" width="250" alt="Icono App">
-  
-  &nbsp; &nbsp; <img src="appMovil.jpeg" width="250" alt="Visualización App Móvil">
-</p>
+<table border="0" width="100%">
+  <tr>
+    <td align="center" valign="middle" width="40%">
+      <img src="icono.jpeg" width="150" alt="Icono App">
+    </td>
+    
+   <td align="center" valign="middle" width="60%">
+      <img src="appMovil.jpeg" width="250" alt="Vista App Móvil">
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <br> <b>Icono App</b>
+    </td>
+    <td align="center">
+      <br>
+      <b>Vista App Móvil</b>
+    </td>
+  </tr>
+</table>
+
 ## 🛠️ Instalación y Uso Local
 
 Si prefieres ejecutarlo en tu propio ordenador:
@@ -63,22 +94,21 @@ Si prefieres ejecutarlo en tu propio ordenador:
     streamlit run dashboard.py
     ```
     *Se abrirá automáticamente una pestaña en tu navegador.*
-<br> <p align="center">
-  <img src="appPC.png" alt="Visualización App PC" width="100%">
-</p>
 
-<br>
+<table border="0" width="100%">
+  <tr>
+    <td align="center" >
+       <img src="appPC.png" alt="Visualización App PC" width="100%">
+    </td>
+   
+  </tr>
 
-## 📂 Cómo obtener tus datos
-
-Para que la app funcione, necesitas el archivo oficial de Revolut:
-
-1.  Abre la App de Revolut.
-2.  Ve a la sección **Stocks (Acciones)**.
-3.  Pulsa en **"..." (Más)** -> **Statements (Extractos)**.
-4.  Selecciona **Profit and Loss**.
-5.  Elige el rango de fechas (ej. último año) y descarga el **CSV**.
-6.  ¡Sube ese archivo al Dashboard!
+  <tr>
+    <td align="center">
+      <br> <b>Vista App PC</b>
+    </td>
+  </tr>
+</table>
 
 ## 🏗️ Arquitectura del Proyecto
 
