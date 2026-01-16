@@ -12,15 +12,13 @@ class IDataParser(ABC):
 class RevolutCSVParser(IDataParser):
     def parse(self, file_path: str) -> List[Transaction]:
         transactions = []
-        print(f"--- Parser: Leyendo PnL real de {file_path} ---")
-        
-        # 1. Leemos el archivo y buscamos la tabla 'Sells' igual que antes
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 lines = f.readlines()
         except FileNotFoundError:
-            raise FileNotFoundError(f"No encuentro {file_path}")
+            return []
 
+        # Limpieza de cabeceras
         sells_lines = []
         capture = False
         expected_header = "Date acquired" 
@@ -38,29 +36,33 @@ class RevolutCSVParser(IDataParser):
         if not sells_lines:
             return []
 
-        # 2. Convertimos a DataFrame
         csv_content = "".join(sells_lines)
         df = pd.read_csv(io.StringIO(csv_content))
 
-        # 3. Mapeo REAL de datos financieros
         for index, row in df.iterrows():
             try:
-                # Cost Basis = Lo que invertiste
+                # Datos básicos
                 invested = float(row.get('Cost basis', 0.0))
-                
-                # Gross PnL = Tu ganancia o pérdida neta en dólares
                 pnl = float(row.get('Gross PnL', 0.0))
+                qty = float(row.get('Quantity', 0.0))
+                
+                # --- NUEVO: Capturamos Fecha de Compra ---
+                date_acquired_str = row.get('Date acquired')
                 
                 t = Transaction(
                     id=str(index),
-                    date=pd.to_datetime(row['Date sold']),
+                    date=pd.to_datetime(row['Date sold']), # Fecha Venta
                     description=row['Security name'],
                     invested=invested,
-                    profit_amount=pnl  # Guardamos el PnL directo del CSV
+                    profit_amount=pnl
                 )
+                
+                # Guardamos los datos extra
+                t.quantity = qty 
+                t.date_acquired = pd.to_datetime(date_acquired_str) # Guardamos fecha compra
+                
                 transactions.append(t)
-            except Exception as e:
+            except Exception:
                 continue
 
         return transactions
-    
