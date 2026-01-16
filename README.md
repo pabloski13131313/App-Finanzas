@@ -60,16 +60,16 @@ Puedes instalar este Dashboard en tu dispositivo móvil iOS o Android para que f
 3. Selecciona **"Instalar aplicación"** o **"Añadir a pantalla de inicio"**.
 4. Confirma la instalación.
 
-<table border="0" width="100%">
+<table border="0" width="180%">
   <tr>
-    <td align="center" valign="middle" width="40%">
+    <td align="center" valign="middle" width="20%">
       <img src="icono.jpeg" width="150" alt="Icono App">
     </td>
-   <td align="center" valign="middle" width="60%">
+   <td align="center" valign="middle" width="40%">
       <img src="appMovil.jpeg" width="250" alt="Vista App Móvil">
     </td>
     <td align="center" valign="middle" width="40%">
-      <img src="appMovil2.jpeg" width="150" alt="Icono App">
+      <img src="appMovil2.jpeg" width="250" alt="Vista App">
     </td>
   </tr>
   <tr>
