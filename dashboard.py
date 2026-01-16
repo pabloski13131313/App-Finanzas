@@ -185,13 +185,19 @@ def main():
         
         # Tabla
         st.write("📖 **Historial de Operaciones:**")
+        
+        df_display = df_empresa.copy()
+        
+        # Convertimos las fechas a TEXTO antes de mostrarlas.
+        # Esto evita el error de formateo si la fecha es NaT o inválida en la nube.
+        df_display["Fecha"] = df_display["Fecha"].apply(lambda x: x.strftime("%Y-%m-%d") if pd.notnull(x) else "-")
+        df_display["Fecha Compra"] = df_display["Fecha Compra"].apply(lambda x: x.strftime("%Y-%m-%d") if pd.notnull(x) else "-")
+
         st.dataframe(
-            # Asegúrate de que la función transactions_to_df genera "Cant. Vendida"
-            df_empresa[["Fecha", "Fecha Compra", "Cant. Vendida", "Venta Total ($)", "Invertido", "PnL ($)", "ROI (%)"]]
+            df_display[["Fecha", "Fecha Compra", "Cant. Vendida", "Venta Total ($)", "Invertido", "PnL ($)", "ROI (%)"]]
             .style.format({
-                "Fecha": "{:%Y-%m-%d}",
-                "Fecha Compra": "{:%Y-%m-%d}",
-                "Cant. Vendida": "{:.4f}",  
+                # Ya no formateamos Fecha aquí porque ya es texto
+                "Cant. Vendida": "{:.4f}",
                 "Venta Total ($)": "${:,.2f}",
                 "Invertido": "${:,.2f}",
                 "PnL ($)": "${:,.2f}",
@@ -206,3 +212,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
